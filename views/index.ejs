@@ -1,0 +1,44 @@
+<%- include("partials/head") %>
+<link rel="stylesheet" href="/style.css">
+
+    <body>
+        <%- include("partials/navbar") %>
+
+            <div class="main">
+                <div class="info-div">
+                    <div class="info-slogan">
+                        <span>Weather.io</span>
+                        <div>
+                            <p>Rain Predictions Made Easy, So You Can Plan Ahead and Stay Dry in Style!</p>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <form action="/search" method="post">
+                            <input type="text" name="location" id="location" placeholder="Search any location...">
+                            <button>Search</button>
+                        </form>
+                    </div>
+                </div>
+                <% if(lastLocations.length>0) {%>
+                <div class="lastSearches">
+                    <span>Recently Searched Locations</span>
+                    <div class="location-container">
+                        <%for(let location of lastLocations) { %>
+                            <div class="location">
+                                <span><%= location.name  %>,
+                                    <%= location.country  %></span>
+                                    <form action="/search/<%=location.lat%>/<%=location.lon%>" method="get">
+                                        <button type="submit">Locate</button>
+                                        
+                                    </form>
+                                    
+            
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+    </body>
+
+    </html>

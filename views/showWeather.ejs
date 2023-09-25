@@ -1,0 +1,195 @@
+<%- include("partials/head") %>
+    <link rel="stylesheet" href="/showWeather.css">
+    <title>Document</title>
+    </head>
+
+    <body>
+        <%- include("partials/navbar") %>
+            <div class="main">
+                <div class="info-container">
+                    <div class="info">
+                        <div class="info-name">
+                            <span>
+                                <%= weatherData.name %>, <%= weatherData.sys.country %>
+                            </span>
+                            <div class="info-img">
+                                <img class="info-icon"
+                                    src="https://openweathermap.org/img/wn/<%=weatherData.weather[0].icon%>@2x.png"
+                                    alt="Weather icon here">
+                            </div>
+                        </div>
+
+                        <div class="info-time">
+                            <span>
+                                <%= today.time %>
+                                    <span>
+                        </div>
+
+                        <div class="info-date">
+                            <span>
+                                <%= today.date %>
+                                    <span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-container">
+                    <div class="temprature-div">
+
+                        <span>Temprature</span>
+
+                        <span> RealFeel: <%= weatherData.main.temp %>&deg;<br></span>
+                        <span> Feels Like: <%= weatherData.main.feels_like %>&deg;<br></span>
+                        <span> Max: <%= weatherData.main.temp_max %>&deg;<br></span>
+                        <span> Min: <%= weatherData.main.temp_min %>&deg;<br></span>                        
+                    </div>
+
+                    <div class="other-div">
+
+                        <span>Daily Metrics</span>
+
+                        <span>Sunrise : <%= sunrise %></span>
+                        <span>Sunset : <%= sunset %></span>
+                        <span>Humidity: <%= weatherData.main.humidity %>%<br></span>
+                        <span>Description: <%= weatherData.weather[0].description %><br></span>
+                        <span>Visibility: <%= weatherData.visibility %> meter</span>
+                    </div>
+                </div>
+                <div class="pollution-container">
+                    <div class="pollution-container-head">
+                        <span>Polluting Components</span>
+                    </div>
+
+                    <div class="pollution-container-note">
+                        <span>Recorded from sunrise to sunset (max - min) value</span>
+                        <span> *µg/m³ refers to micrograms per cubic meter.</span>
+                    </div>
+                    <div class="grid-system">
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> aqi : <%= pollutionData[6].main.aqi %></span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">AQI (Air Quality Index): Standardized pollution measure. Higher values
+                                indicate greater risks.</span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> co : <%= pollutionData[0].components.co %> - <%= pollutionData[6].components.co
+                                            %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                CO (Carbon Monoxide): Colorless gas from combustion. Hazardous at high levels, impacts
+                                transportation.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> no : <%= pollutionData[0].components.no %> - <%= pollutionData[6].components.no
+                                            %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">Gases from vehicles and industry,harms health at levels above 100
+                                µg/m³. </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> no2 : <%= pollutionData[0].components.no2 %> - <%=
+                                            pollutionData[6].components.no2 %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                NO2 can irritate the respiratory system and contribute to smog and acid rain,harms
+                                health at levels above 100 µg/m³.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> o3 : <%= pollutionData[0].components.o3 %> - <%= pollutionData[6].components.o3
+                                            %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                O3 (Ozone): Ground-level ozone affects lungs and crops. Levels above 70 µg/m³ are
+                                harmful.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> so2 : <%= pollutionData[0].components.so2 %> - <%=
+                                            pollutionData[6].components.so2 %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                SO2 (Sulfur Dioxide): From burning fuels with sulfur. Health impacts occur above 50
+                                µg/m³.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> pm2 : <%= pollutionData[0].components.pm2_5 %> - <%=
+                                            pollutionData[6].components.pm2_5 %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                PM2.5 (Particulate Matter 2.5): Tiny particles from vehicles, industry. Unsafe above 25
+                                µg/m³.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> pm10 : <%= pollutionData[0].components.pm10 %> - <%=
+                                            pollutionData[6].components.pm10 %>
+                                </span>
+                                <img src="/bgImg/arrow.png" alt="">
+                            </div>
+                            <span class="explore">
+                                PM10 (Particulate Matter 10): Larger particles from construction, industry. Unsafe above
+                                50 µg/m³.
+                            </span>
+                        </div>
+                        <div class="pollution-container-elements">
+                            <div class="pollution-container-elements-head">
+                                <span> nh3 : <%= pollutionData[0].components.nh3 %> - <%= pollutionData[6].components.nh3%>
+                            </span>
+                            <img src="/bgImg/arrow.png" alt="">
+                                
+                            </div>
+                            <span class="explore">
+                                NH3 (Ammonia): Emitted by agriculture, industry. Harmful above 200 µg/m³, affects
+                                respiratory health.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-element">
+                    <div>
+                        <form action="#" method="get">
+                            <button type="submit">Go back</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const imgs = document.querySelectorAll("img");
+                const explore = document.querySelectorAll(".explore");
+                const gridSysy = document.querySelectorAll(".pollution-container-elements");
+                for (let i = 1; i < imgs.length; i++) {
+                    imgs[i].addEventListener("click", () => {
+                        explore[i - 1].classList.toggle("explore-done");
+                        gridSysy[i - 1].classList.toggle("increase");
+                    })
+                }
+            </script>
+    </body>
+
+
+    </html>

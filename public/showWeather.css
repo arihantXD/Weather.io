@@ -1,0 +1,253 @@
+body {
+    min-height: 130vh;
+    width: 100vw;
+    overflow-x: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/bgImg/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.main {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.info {
+    margin-top: 50px;
+}
+
+.info-name {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.info-name>span {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+img {
+    height: 60px;
+    width: 60px;
+}
+
+.info-time,
+.info-date {
+    font-size: 1.5rem;
+}
+
+.weather-container {
+    margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.weather-container span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.weather-container div {
+    padding: 15px 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.7px);
+    -webkit-backdrop-filter: blur(2.7px);
+    width: 40%;
+}
+
+.weather-container span:nth-child(1) {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 5px 15px;
+    border: none;
+    border: 2px solid #000000;
+    outline: none;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    border: 2px solid white;
+    margin-top: 15px;
+    transition: 0.3s ease-in-out;
+    margin-bottom: 30px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-5%);
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.pollution-container {
+    padding: 15px 15px;
+    margin-top: 50px;
+    color: black;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    margin-bottom: 15px;
+}
+
+.pollution-container-head {
+    text-align: center;
+}
+
+.pollution-container-head>span:nth-child(1) {
+    font-size: 2rem;
+    display: block;
+}
+
+.grid-system {
+    display: grid;
+    margin-top: 30px;
+    /* color: white; */
+    grid-auto-flow: row;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-weight: 500;
+}
+
+.pollution-container-elements {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 3px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.9px);
+    -webkit-backdrop-filter: blur(3.9px);
+
+}
+
+.pollution-container-elements-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pollution-container-note span {
+    display: block;
+    margin: 5px 0px;
+    font-weight: 400;
+}
+
+.explore {
+    display: none;
+}
+
+.explore-done {
+    display: block;
+}
+
+.increase {
+    grid-row: span 2;
+    transition: 0.3s ease-in;
+}
+
+
+.pollution-container img {
+    width: 24px;
+    height: 24px;
+}
+
+.pollution-container img:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width : 1050px) {
+    .pollution-container-elements {
+        padding: 15px 10px;
+    }
+
+    .grid-system {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width : 850px) {
+    .main {
+        width: 85%;
+    }
+
+    .weather-container {
+        flex-direction: column;
+    }
+
+    .weather-container>div {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width : 650px) {
+    .info-name>span {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+    .pollution-container-head>span:nth-child(1) {
+        font-size: 1.5rem;
+        display: block;
+    }
+    .info-time,
+    .info-date {
+        font-size: 1.2rem;
+    }
+    .weather-container span:nth-child(1) {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    .weather-container span {
+        display: block;
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width : 550px) {
+    .grid-system {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width : 450px) {
+    .info{
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .info-name>span {
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+    .pollution-container-head>span:nth-child(1) {
+        font-size: 1.3rem;
+        display: block;
+    }
+    .info-time,
+    .info-date {
+        font-size: 1rem;
+    }
+    .weather-container span:nth-child(1) {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    .weather-container span {
+        display: block;
+        font-size: 1rem;
+    }
+}

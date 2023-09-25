@@ -1,0 +1,48 @@
+<%- include("partials/head") %>
+    <title>Select Location</title>
+    <link rel="stylesheet" href="/locationSelect.css">
+    </head>
+
+    <body>
+        <%- include("partials/navbar") %>
+        <div class="main">
+            <p>Search results for <span>
+                    <%= searchedCity %>
+                </span></p>
+            <div class="container">
+                <% for(cords of data) {%>
+                    <div class="location-info">
+                        <div class="location-info-left">
+                            <div>
+                                <span class="containerHead">
+                                    <%= cords.name %>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="containerCord"> Cordinates : <%= cords.lat %>, <%= cords.lon %></span>
+                            </div>
+                            <div>
+                                <span class="containerLoc">Location : <%= cords.state %>, <%= cords.country %></span>
+                            </div>
+                        </div>
+
+                        <div class="location-info-right">
+                            <div class="location-search">
+                                <form action="/search/<%=cords.lat%>/<%=cords.lon%>" method="get"><button>Search</button></form>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+            <% if(data.length === 0 || !data ){ %>
+                <div class="container">
+                    <span style="display: block;" class="containerHead">No Results Found</span>
+                    <form action="/">
+                        <button>Go Back</button>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </body>
+
+    </html>
